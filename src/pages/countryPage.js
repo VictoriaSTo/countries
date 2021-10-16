@@ -41,7 +41,6 @@ const CountryPage = () => {
   
   return (
     <div>
-      <h1>It's a country page </h1>
       <CountryDetails
           flag={countryDetails.flag}
           name={countryDetails.name}
