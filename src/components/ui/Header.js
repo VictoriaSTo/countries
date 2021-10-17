@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { AppBar, formControlClasses, Toolbar, useScrollTrigger} from "@mui/material";
+import React from "react";
+import { AppBar, Toolbar, useScrollTrigger} from "@mui/material";
 import { Typography } from "@mui/material";
 import SwitchMode from "./SwitchMode";
-import Box from '@mui/material/Box';
 
 const Header = ({ isDarkMode, onSetIsDarkMode }) => {
 

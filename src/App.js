@@ -1,23 +1,19 @@
 import { Route, Redirect } from 'react-router-dom';
-
 import React, { useState } from "react";
+
 import { makeStyles } from "@mui/styles";
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Header from '../src/components/ui/Header';
-// import theme from './components/ui/Theme';
-import AllCountries from "./components/countries/AllCountries";
-import themeDark from "./components/ui/Theme";
-import CountryPage from "./pages/countryPage";
-import NotFound from "./pages/notFound";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
-import Switch from '@mui/material/Switch';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import { fontSize } from '@mui/system';
+
+import Header from '../src/components/ui/Header';
+import AllCountries from "./pages/AllCountries";
+import CountryPage from "./pages/countryPage";
+
 
 
 function App() {
+
+  // theme settings (ideally should be as a separate component in theme.js)
   document.body.style.margin = '0px';
   const [isDarkMode, setIsDarkMode] = useState(false);
   const onSetIsDarkMode = () => {
@@ -51,10 +47,6 @@ const theme = createTheme({
     text: {
       primary: isDarkMode ? `${white}` : `${veryDarkBlueText}`
     }
-    // background: {
-    //   default: isDarkMode ? `${veryDarkBlue}` : `${white}`,
-    //   paper: isDarkMode ? `${veryDarkBlue}` : `${white}`,
-    // }
   },
   typography: {
     fontFamily: "Nunito Sans",
@@ -88,12 +80,13 @@ const useStyles = makeStyles(theme => ({
 
 const classes = useStyles();
 
+// routes
+
   return (
       <ThemeProvider theme={theme}>
         <Container maxWidth="1600px" className={classes.container}>
             <Header isDarkMode={isDarkMode} onSetIsDarkMode={onSetIsDarkMode}/>
             <main>
-              {/* <Switch> */}
               <Route path='/' exact>
                 <Redirect to='/countries' />
               </Route>
@@ -103,10 +96,6 @@ const classes = useStyles();
               <Route path='/countries/:countryName'>
                 <CountryPage />
               </Route>
-              {/* <Route path='*'>
-                <NotFound />
-              </Route> */}
-              {/* </Switch> */}
             </main>
         </Container>
       </ThemeProvider>
@@ -114,26 +103,3 @@ const classes = useStyles();
 }
 
 export default App;
-
-// function App() {
-//   const [darkMode, setDarkMode] = useState(false);
-
-//   const theme = createTheme({
-//     palette: {
-//       mode: darkMode ? "dark" : "light",
-//     },
-//   });
-
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <Paper style={{ height: "100vh"}}>
-//         <Grid>
-//           <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
-//           <h1>Hello</h1>
-//         </Grid>
-//       </Paper>
-//     </ThemeProvider>
-//   );
-// }
-
-// export default App;

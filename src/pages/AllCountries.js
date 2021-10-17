@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import CountryItem from './CountryItem';
+import CountryItem from '../components/countries/CountryItem';
 import { Grid } from '@mui/material';
-import RegionFilter from '../ui/RegionFilter';
-import SearchForm from '../ui/SearchForm';
+import RegionFilter from '../components/ui/RegionFilter';
+import SearchForm from '../components/ui/SearchForm';
 
 
 
