@@ -4,19 +4,22 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useTheme } from '@mui/styles';
 
 const RegionFilter = ({ filterCountries, regions }) => {
   const [region, setRegion] = React.useState('');
+  const theme = useTheme(); 
 
   const handleChange = (event) => {
     setRegion(event.target.value);
     filterCountries(event.target.value);
   };
 
+
   return (
-    <Box sx={{ minWidth: 220}}>
-      <FormControl fullWidth>
-        <InputLabel id="region-filter-label">Filter by Region</InputLabel>
+    <Box sx={{ minWidth: 220 }}>
+      <FormControl fullWidth >
+        <InputLabel id="region-filter-label" sx={{ color: `${theme.palette.text.primary}`}}>Filter by Region</InputLabel>
         <Select
           labelId="region-filter-label"
           id="region-select"
@@ -25,7 +28,7 @@ const RegionFilter = ({ filterCountries, regions }) => {
           onChange={handleChange}
         >
           {regions.map((region) => {
-            return <MenuItem key={region} value={region}>{region}</MenuItem>           
+            return <MenuItem sx={{ backgroundColor: `${theme.palette.primary.main}`}} key={region} value={region} >{region}</MenuItem>           
           })}
         </Select>
       </FormControl>

@@ -18,6 +18,7 @@ import { fontSize } from '@mui/system';
 
 
 function App() {
+  document.body.style.margin = '0px';
   const [isDarkMode, setIsDarkMode] = useState(false);
   const onSetIsDarkMode = () => {
     setIsDarkMode(!isDarkMode)
@@ -43,12 +44,13 @@ const theme = createTheme({
     },
     primary: {
       main: isDarkMode ? `${darkBlue}` : `${white}`,
-      // light: `${white}`,
-      // dark: `${veryDarkBlue}`
     },
     secondary: {
-      main: `${lightGray}`
+      main: isDarkMode ? `${darkBlue}` : `${lightGray}`
     },
+    text: {
+      primary: isDarkMode ? `${white}` : `${veryDarkBlueText}`
+    }
     // background: {
     //   default: isDarkMode ? `${veryDarkBlue}` : `${white}`,
     //   paper: isDarkMode ? `${veryDarkBlue}` : `${white}`,

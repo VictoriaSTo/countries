@@ -22,28 +22,32 @@ const AllCountries = () => {
 
   useEffect(() => {
     const fetchCountries = async () => {
-      const response = await fetch("https://restcountries.com/v2/all");
-      const respData = await response.json();
-
-      const loadedCountries = [];
-
-      respData.forEach(function(item, index) {
-        loadedCountries.push({
-          id: index,
-          flag: item.flag,
-          name: item.name,
-          nativeName: item.nativeName,
-          population: item.population,
-          region: item.region,
-          capital: item.capital,
-          subregion: item.subregion,
-          topLevelDomain: item.topLevelDomain,
-          currencies: item.currencies,
-          languages: item.languages,
-          borderCountries: item.borders
+      try {
+        const response = await fetch("https://restcountries.com/v2/all");
+        const respData = await response.json();
+  
+        const loadedCountries = [];
+  
+        respData.forEach(function(item, index) {
+          loadedCountries.push({
+            id: index,
+            flag: item.flag,
+            name: item.name,
+            nativeName: item.nativeName,
+            population: item.population,
+            region: item.region,
+            capital: item.capital,
+            subregion: item.subregion,
+            topLevelDomain: item.topLevelDomain,
+            currencies: item.currencies,
+            languages: item.languages,
+            borderCountries: item.borders
+          })
         })
-      })
-      setCountries(loadedCountries);
+        setCountries(loadedCountries);
+      } catch (error) {
+        console.log(error)
+      }
     }
     fetchCountries();
   }, [])

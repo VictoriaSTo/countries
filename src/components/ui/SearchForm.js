@@ -3,9 +3,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
+import { useTheme } from '@mui/styles';
 
 const SearchForm = ({ searchCountries }) => {
   const [query, setQuery] = useState("");
+  const theme = useTheme(); 
 
 
 const changeQueryHandler = (event) => {
@@ -23,10 +25,12 @@ const changeQueryHandler = (event) => {
     autoComplete="off"
   >
     <TextField 
+      sx={{ color: `${theme.palette.text.primary}` }}
       id="country" 
-      label="Search for a country..." 
+      placeholder="Search for a country..." 
       variant="outlined" 
       value={query} 
+      color="primary"
       onChange={changeQueryHandler}
       InputProps={{
         startAdornment: (
