@@ -19,7 +19,7 @@ const changeQueryHandler = (event) => {
     <Box
     component="form"
     sx={{
-      '& > :not(style)': { m: 1, width: '480px' },
+      '& > :not(style)': { m: 1, width: '320px', marginLeft: '0px' },
     }}
     noValidate
     autoComplete="off"

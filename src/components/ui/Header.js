@@ -22,9 +22,7 @@ const Header = ({ isDarkMode, onSetIsDarkMode }) => {
     <ElevationScroll>
       <AppBar>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Typography noWrap>
             <h3>Where in the world?</h3>
           </Typography>
           <div sx={{ display: "flex", marginTop: "0px" }}>

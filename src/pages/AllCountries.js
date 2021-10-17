@@ -76,10 +76,10 @@ const AllCountries = () => {
     <Grid container item justifyContent="space-between" sx={{
       marginBottom: '48px'
       }}>
-      <Grid item xs={6} md={6} >
+      <Grid item xs={12} md={6} >
         <SearchForm searchCountries={searchCountries}/>
       </Grid>
-      <Grid item xs={6} md={2} style={filterStyle} >
+      <Grid item xs={8} md={2} style={filterStyle} >
         <RegionFilter regions={allRegions} filterCountries={filterCountries}/>
       </Grid>
     </Grid>

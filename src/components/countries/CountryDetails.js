@@ -10,8 +10,7 @@ import { useTheme } from '@mui/styles';
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
-  maxWidth: '85%',
-  maxHeight: '85%',
+  maxWidth: '100%'
 });
 
 const CountryDetails = ({ flag, name, nativeName,population,region, capital, subregion, topLevelDomain, currencies, languages, borderCountries}) => {
@@ -30,14 +29,13 @@ const CountryDetails = ({ flag, name, nativeName,population,region, capital, sub
             startIcon={<KeyboardBackspaceIcon />}
             sx={{
               width: '120px',
-              marginLeft: '80px',
               marginBottom: '5%'
               }}
             >
               Back
           </Button>
         </Grid>
-        <Grid item xs={10} md={6} >
+        <Grid item xs={12} md={5} >
             <Img alt="country flag" src={flag} />
         </Grid>
         <Grid item xs={10} md={6} container>
@@ -46,7 +44,7 @@ const CountryDetails = ({ flag, name, nativeName,population,region, capital, sub
               <Typography gutterBottom variant="subtitle1" component="div" sx={{ color: `${theme.palette.text.primary}` }}>
                 <h1>{name}</h1>
               </Typography>
-              <Grid container spacing={12}>
+              <Grid container spacing={6} >
                 <Grid item>
                   <Typography variant="body3" gutterBottom sx={{ color: `${theme.palette.text.primary}` }}>
                     <p>Native Name: {nativeName}</p>
@@ -57,7 +55,7 @@ const CountryDetails = ({ flag, name, nativeName,population,region, capital, sub
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="body3" gutterBottom sx={{ color: `${theme.palette.text.primary}` }}>
+                  <Typography variant="body3" gutterBottom sx={{ color: `${theme.palette.text.primary}`}}>
                     <p>Top Level Domain: {topLevelDomain}</p>
                     <p>Currencies: {currencies}</p>
                     <p>Languages: {languages}</p>
