@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { AppBar, formControlClasses, Toolbar, useScrollTrigger} from "@mui/material";
+import { Typography } from "@mui/material";
 
 const Header = () => {
+
+
   function ElevationScroll(props) {
     const { children } = props;
     const trigger = useScrollTrigger({
@@ -14,12 +17,13 @@ const Header = () => {
     });
   }
 
-
   return (
     <ElevationScroll>
       <AppBar>
         <Toolbar>
-          <h3>Where in the world?</h3>
+          <Typography>
+            <h3>Where in the world?</h3>
+          </Typography>
         </Toolbar>
       </AppBar>
     </ElevationScroll>

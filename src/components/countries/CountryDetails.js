@@ -34,7 +34,7 @@ const CountryDetails = ({ flag, name, nativeName,population,region, capital, sub
             </Typography>
             <Grid container spacing={12}>
               <Grid item>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body3" gutterBottom>
                   <p>Native Name: {nativeName}</p>
                   <p>Population: {population}</p>
                   <p>Region: {region}</p>
@@ -43,7 +43,7 @@ const CountryDetails = ({ flag, name, nativeName,population,region, capital, sub
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body3" gutterBottom>
                   <p>Top Level Domain: {topLevelDomain}</p>
                   <p>Currencies: {currencies}</p>
                   <p>Languages: {languages}</p>

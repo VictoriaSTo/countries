@@ -15,6 +15,11 @@ const AllCountries = () => {
     setCountries(filteredCountries);
   }
 
+  const searchCountries = (query) => {
+    const searchedCountries = countries.filter((country) => country.name.toLowerCase().startsWith(query.toLowerCase()));
+    setCountries(searchedCountries);
+  }
+
   useEffect(() => {
     const fetchCountries = async () => {
       const response = await fetch("https://restcountries.com/v2/all");
@@ -59,18 +64,22 @@ const AllCountries = () => {
     )
   })
   const filterStyle = {
-    marginTop: '60px',    
+    marginTop: '10px'
   }
 
   return (
   <Grid container>
-    <Grid item xs={10} md={10} style={filterStyle} >
-      <RegionFilter regions={allRegions} filterCountries={filterCountries}/>
+    <Grid container item justifyContent="space-between" sx={{
+      marginBottom: '48px'
+      }}>
+      <Grid item xs={6} md={6} >
+        <SearchForm searchCountries={searchCountries}/>
+      </Grid>
+      <Grid item xs={6} md={2} style={filterStyle} >
+        <RegionFilter regions={allRegions} filterCountries={filterCountries}/>
+      </Grid>
     </Grid>
-    <Grid item xs={10} md={10} style={filterStyle} >
-      <SearchForm />
-    </Grid>
-    <Grid container item spacing={10} justifyContent="center" sx={{marginTop: '64px'}}>
+    <Grid container item spacing={10} justifyContent="center" >
       {countriesList}
     </Grid>
   </Grid>

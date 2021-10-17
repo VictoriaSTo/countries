@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const CountryItem = ({ id, flag, name, population, region, capital }) => {
   return (
-    <Link to={`/countries/${name}`}>
+    <Link to={`/countries/${name}`} style={{ textDecoration: 'none' }}>
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
@@ -16,7 +16,7 @@ const CountryItem = ({ id, flag, name, population, region, capital }) => {
           alt="Paella dish"
         />
         <CardContent>
-          <Typography vatiant="h5" color="text.primary">
+          <Typography variant="h6" color="text.primary">
             {name}
           </Typography>
           <Typography variant="body2" color="text.primary">

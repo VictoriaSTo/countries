@@ -14,7 +14,7 @@ const RegionFilter = ({ filterCountries, regions }) => {
   };
 
   return (
-    <Box sx={{ minWidth: 220, marginTop: '20px' }}>
+    <Box sx={{ minWidth: 220}}>
       <FormControl fullWidth>
         <InputLabel id="region-filter-label">Filter by Region</InputLabel>
         <Select

@@ -1,22 +1,105 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import React, { useState } from "react";
-import { Paper } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 // import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../src/components/ui/Header';
-import { ThemeProvider } from '@mui/material/styles';
 // import theme from './components/ui/Theme';
 import AllCountries from "./components/countries/AllCountries";
 import themeDark from "./components/ui/Theme";
 import CountryPage from "./pages/countryPage";
 import NotFound from "./pages/notFound";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Container from '@mui/material/Container';
+import Switch from '@mui/material/Switch';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { fontSize } from '@mui/system';
+
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const darkBlue = "hsl(209, 23%, 22%)"
+  const veryDarkBlue ="hsl(207, 26%, 17%)"
+  const veryDarkBlueText = "hsl(200, 15%, 8%)"
+  const darkGray = "hsl(0, 0%, 52%)"
+  const lightGray = "hsl(0, 0%, 98%)"
+  const white = "hsl(0, 0%, 100%)"
+
+const theme = createTheme({
+  palette: {
+    type: isDarkMode ? 'dark' : 'light',
+    common: {
+      darkBlue: `${darkBlue}`,
+      veryDarkBlue: `${veryDarkBlue}`,
+      veryDarkBlueText: `${veryDarkBlueText}`,
+      darkGray: `${darkGray}`,
+      lightGray: `${lightGray}`,
+      white: `${white}`
+    },
+    primary: {
+      main: isDarkMode ? `${darkBlue}` : `${white}`,
+      // light: `${white}`,
+      // dark: `${veryDarkBlue}`
+    },
+    secondary: {
+      main: `${lightGray}`
+    },
+    // background: {
+    //   default: isDarkMode ? `${veryDarkBlue}` : `${white}`,
+    //   paper: isDarkMode ? `${veryDarkBlue}` : `${white}`,
+    // }
+  },
+  typography: {
+    fontFamily: "Nunito Sans",
+    body2: {
+      fontFamily: "Nunito Sans",
+      fontSize: 14,
+      ontWeightLight: 300
+    },
+    h6: {      
+      fontFamily: "Nunito Sans",
+      fontWeightBold: 600, 
+    },
+    body3: {
+      fontFamily: "Nunito Sans",
+      fontSize: 16,
+      ontWeightLight: 300
+    },
+  },
+});
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    minHeight: '100vh',
+    backgroundColor: isDarkMode ? `${veryDarkBlue}` : `${lightGray}`,
+    margin: '0',
+    paddingLeft: '10%',
+    paddingRight: '10%'
+  }
+}))
+
+const classes = useStyles();
+
   return (
-      <ThemeProvider theme={themeDark}>
-        <Paper>
+      <ThemeProvider theme={theme}>
+        <Container maxWidth="1600px" className={classes.container}>
             <Header />
+            <div 
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginTop: '80px'
+              }}>
+              {isDarkMode ? <LightModeIcon /> : <DarkModeIcon /> }
+              <Switch 
+                checked={isDarkMode}
+                onClick={() => setIsDarkMode(!isDarkMode)}
+              />
+            </div>
             <main>
+              {/* <Switch> */}
               <Route path='/' exact>
                 <Redirect to='/countries' />
               </Route>
@@ -26,11 +109,12 @@ function App() {
               <Route path='/countries/:countryName'>
                 <CountryPage />
               </Route>
-              {/* <Route path='/'>
+              {/* <Route path='*'>
                 <NotFound />
               </Route> */}
+              {/* </Switch> */}
             </main>
-        </Paper>
+        </Container>
       </ThemeProvider>
   )
 }
