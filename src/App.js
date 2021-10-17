@@ -19,6 +19,9 @@ import { fontSize } from '@mui/system';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const onSetIsDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+  }
 
   const darkBlue = "hsl(209, 23%, 22%)"
   const veryDarkBlue ="hsl(207, 26%, 17%)"
@@ -76,7 +79,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: isDarkMode ? `${veryDarkBlue}` : `${lightGray}`,
     margin: '0',
     paddingLeft: '10%',
-    paddingRight: '10%'
+    paddingRight: '10%',
+    paddingTop: '102px'
   }
 }))
 
@@ -85,19 +89,7 @@ const classes = useStyles();
   return (
       <ThemeProvider theme={theme}>
         <Container maxWidth="1600px" className={classes.container}>
-            <Header />
-            <div 
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                marginTop: '80px'
-              }}>
-              {isDarkMode ? <LightModeIcon /> : <DarkModeIcon /> }
-              <Switch 
-                checked={isDarkMode}
-                onClick={() => setIsDarkMode(!isDarkMode)}
-              />
-            </div>
+            <Header isDarkMode={isDarkMode} onSetIsDarkMode={onSetIsDarkMode}/>
             <main>
               {/* <Switch> */}
               <Route path='/' exact>
